@@ -1,2 +1,2 @@
 # reality-of-Dream-of-Red-Mansions
-《红楼梦》前八十回与后四十回用词分析，构建支持向量模型。再对个别回目判断作者。
+Comparision analysis of words use between 1~80 chapters and 80~120 chapters of <A Dream of Red Mansions>. And then construct Support Vectors to determine who write the test chapters.
