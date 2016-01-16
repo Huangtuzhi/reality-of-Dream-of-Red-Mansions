@@ -98,11 +98,9 @@ class textProcesser(object):
 	def sub_replace(self, line):
 		regex = re.compile(ur"[^\u4e00-\u9fa5a-zA-Z0-9\s]")
 		return regex.sub('', line.decode('utf-8'))
-		
+
 if __name__ == '__main__':
 	processer = textProcesser()
-	# processer.divide_into_chapter()
-
-	# processer.perform_segmentation()
-
+	processer.divide_into_chapter()
+	processer.perform_segmentation()
 	processer.perform_wordcount()
