@@ -4,6 +4,7 @@
 import string
 import jieba
 import sys
+import re
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -60,8 +61,9 @@ class textProcesser(object):
 		delset = string.punctuation
 
 		line = str(document)
-		line = line.translate(None, delset) #去除标点
+		line = line.translate(None, delset) #去除英文标点
 		line = "".join(line.split('\n')) # 去除回车
+		line = self.sub_replace(line) #去除中文标点
 		word_array = []
 		words = line.split()
 		for word in words:
@@ -76,7 +78,8 @@ class textProcesser(object):
 		# 排序后写入文本
 		sorted_result = sorted(result_dict.iteritems(), key=lambda d:d[1], reverse = True)
 		for one in sorted_result:
-			file_out.write(one[0] + '\t' + str(one[1]) + '\n')
+			line = "".join(one[0] + '\t' + str(one[1]) + '\n')
+			file_out.write(line)
 		file_out.close()
 
 	# 对所有文档进行分词
@@ -84,10 +87,18 @@ class textProcesser(object):
 		for loop in range(1, 121):
 			path_str = 'text/chapter-words-' + str(loop)
 			file_in = open(path_str, 'r')
-			document = file_in.readlines()
+			line = file_in.readline()
+			document = ""
+			while line:
+				document += line
+				line = file_in.readline()
 			self.count_words(document, loop)
 			file_in.close()
 
+	def sub_replace(self, line):
+		regex = re.compile(ur"[^\u4e00-\u9fa5a-zA-Z0-9\s]")
+		return regex.sub('', line.decode('utf-8'))
+		
 if __name__ == '__main__':
 	processer = textProcesser()
 	# processer.divide_into_chapter()
