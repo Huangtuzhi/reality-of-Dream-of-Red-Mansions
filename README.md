@@ -1,5 +1,5 @@
 ## reality-of-Dream-of-Red-Mansions
-Comparision analysis of words use between 1\-80 chapters and 80\-120 chapters of **A Dream of Red Mansions**. And then construct Support Vectors to determine who write the test chapters.
+Comparision analysis of words use between 1\~80 chapters and 80\~120 chapters of **A Dream of Red Mansions**. And then construct Support Vectors to determine who write the test chapters.
 
 在学界一般认为，《红楼梦》后 40 回并非曹雪芹所著。本文尝试应用机器学习的方法来分析原著文本中作者的用词习惯，从技术角度去说明《红楼梦》前 80 回和后 40 回的写作风格差别，继而可以确认后 40 回非原作者所写。
 
